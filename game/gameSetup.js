@@ -75,20 +75,25 @@ function setupGameText()
             startButton:    "startButton",
         },
 
-        questions://an array
+        outro:
+        {
+            
+        },
+
+        questions://an array of storylines and decisions
         [
             {
                 story: "story0",
-                options://both just go back and forth between questions 0 and 1 so far
+                options://both just go back and forth between questions 0 and 1 for now
                 [
                     createOptionButtonTag(1, "option0"),
-                    createOptionButtonTag(1, "option0")
+                    createOptionButtonTag(1, "option1")
                 ]
             },
 
             {
                 story: "story1",
-                options://both just go back and forth between questions 0 and 1 so far
+                options://both just go back and forth between questions 0 and 1 for now
                 [
                     createOptionButtonTag(0, "option0"),
                     createOptionButtonTag(0, "option1")
