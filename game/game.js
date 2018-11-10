@@ -22,6 +22,9 @@
 */
 "use strict";
 
+/**
+ * Displays introduction text and a play button to gameTextArea and gameInteractArea
+*/
 function intro()
 {
     gameTextArea.innerHTML += gameText.intro.greeting + "</br></br>";//eraces any existing error text
@@ -30,21 +33,21 @@ function intro()
     gameInteractArea.innerHTML += `<button type=\"button\" onclick=\"play()\">${gameText.intro.startButton}</button>`;//play() button
 }
 
+
+/**
+ * Displays a question from gameText that the user will answer
+ * @param {question} The question to display, default 0
+*/
 function play(question)
 {
-    wipeGameplayAreas();
-
     if (question === undefined)
     {
         question = 0;
     }
 
-    //let i = 0;
-    //for (let i = 0; i < numOfQuestions; ++i)
-    //{
-        gameTextArea.innerHTML += gameText.questions[question].story + "</br></br>";
+    wipeGameplayAreas();
+    gameTextArea.innerHTML += gameText.questions[question].story + "</br></br>";
 
-        gameInteractArea.innerHTML += gameText.questions[question].options[0];
-        gameInteractArea.innerHTML += gameText.questions[question].options[1];
-    //}
+    gameInteractArea.innerHTML += gameText.questions[question].options[0];
+    gameInteractArea.innerHTML += gameText.questions[question].options[1];
 }
