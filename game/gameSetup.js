@@ -62,16 +62,29 @@ function setupGameText()
     {
         intro:
         {
-            greeting: "greeting",
-            introText: "introText",
-            startButton: "startButton",
+            greeting:       `greeting ${playerName}`,
+            introText:      "introText",
+            startButton:    "startButton",
         },
 
         questions://an array
         [
             {
-                story: "story",
-                options: ["option0", "option1", "option2", "option3"]
+                story: "story0",
+                options://both just go back and forth between questions 0 and 1 so far
+                [
+                    "<button type=\"button\" onclick=\"play(1)\">option0</button>",
+                    "<button type=\"button\" onclick=\"play(1)\">option1</button>"
+                ]
+            },
+
+            {
+                story: "story1",
+                options://both just go back and forth between questions 0 and 1 so far
+                [
+                    "<button type=\"button\" onclick=\"play(0)\">option0</button>",
+                    "<button type=\"button\" onclick=\"play(0)\">option1</button>"
+                ]
             },
 
         ]

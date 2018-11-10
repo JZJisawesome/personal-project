@@ -30,18 +30,21 @@ function intro()
     gameInteractArea.innerHTML += `<button type=\"button\" onclick=\"play()\">${gameText.intro.startButton}</button>`;//play() button
 }
 
-function play()
+function play(question)
 {
     wipeGameplayAreas();
 
-    let i = 0;
+    if (question == undefined)
+    {
+        question = 0;
+    }
+
+    //let i = 0;
     //for (let i = 0; i < numOfQuestions; ++i)
     //{
-        gameTextArea.innerHTML += gameText.questions[0].story + "</br></br>";
+        gameTextArea.innerHTML += gameText.questions[question].story + "</br></br>";
 
-        for (let j = 0; j < 4; ++j)
-            gameInteractArea.innerHTML += `<button type=\"button\" onclick=\"\">${gameText.questions[i].options[j]}</button>`;
+        gameInteractArea.innerHTML += gameText.questions[question].options[0];
+        gameInteractArea.innerHTML += gameText.questions[question].options[1];
     //}
-
-
 }
