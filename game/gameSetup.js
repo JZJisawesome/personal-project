@@ -153,7 +153,6 @@ function setupGameText()
                 createOptionButtonTag(0, "Placeholder option text (option: 0)"),
                 createOptionButtonTag(0, "Placeholder option text (option: 1)")
             ),
-
         ]
     };
 }
