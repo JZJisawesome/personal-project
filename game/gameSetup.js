@@ -63,12 +63,12 @@ const gameInteractArea = document.getElementById("gameInteractArea");
 */
 function setup()
 {
-    playerName = nameField.value;
-
-    if (playerName === "")
+    if (nameField.value === "")
         gameTextArea.innerHTML = "Whoops! Looks like you've forgotton to enter your name. Try again.";
     else
     {
+        playerName = nameField.value;
+
         wipeGameplayAreas();
 
         setupGameText();
