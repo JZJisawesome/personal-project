@@ -25,17 +25,20 @@
 let playerName = "";
 let gameText;//object with all text to use for the game
 
+
 const gameForm = document.getElementById("gameForm");
+const nameField = document.getElementById("nameField");
+
 const gameTextArea = document.getElementById("gameTextArea");
 const gameInteractArea = document.getElementById("gameInteractArea");
 
 
 function setup()
 {
-    playerName = document.getElementById("nameField").value;
+    playerName = nameField.value;
 
     if (playerName == "")
-        gameInteractArea.innerHTML = "Whoops! Looks like you've forgotton to enter your name. Try again.";
+        gameTextArea.innerHTML = "Whoops! Looks like you've forgotton to enter your name. Try again.";
     else
     {
         wipeGameplayAreas();
