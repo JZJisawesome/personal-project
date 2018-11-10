@@ -20,6 +20,27 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
 */
+
+/*
+ * game.js is the underlying JavaScript for the text and button based role playing game
+ * in our MYP Personal Project's website.
+ *
+ * It requires the following HTML elements to be present:
+ *
+ * A <form> with id="gameForm", onsubmit="return false", and inside of it...
+ *  An <input> with id="nameField" and type="text"
+ *  An <input> with type="submit" and onclick="setup()"
+ *
+ * After the form:
+ *
+ * A <div> with id="gameTextArea"
+ * A <div> with id="gameInteractArea"
+ * A <script> with src pointing to this file (game.js)
+ *
+ * These can more or less be in any order with other extra elements in between,
+ * provided the script is the last of these.
+*/
+
 "use strict";
 
 /**
@@ -30,6 +51,8 @@ let playerName = "";
 
 /**
  * The text to use for the game and the flow of the questions
+ *
+ * Initlized after the playerName is known (setup() calls setupGameText())
  * @type {Object}
  */
 let gameText;
@@ -73,7 +96,7 @@ function wipeGameplayAreas()
 */
 function setup()
 {
-    if (nameField.value === "")
+    if (nameField.value === "")//no name entered
         gameTextArea.innerHTML = "Whoops! Looks like you've forgotton to enter your name. Try again.";
     else
     {
@@ -105,11 +128,13 @@ function intro()
 function play(question = 0)
 {
     wipeGameplayAreas();
+
     gameTextArea.innerHTML += gameText.questions[question].story + "</br></br>";
+
 
     gameInteractArea.innerHTML += gameText.questions[question].options[0];
     gameInteractArea.innerHTML += gameText.questions[question].options[1];
-    
+
     if (gameText.questions[question].end)
     {
         gameInteractArea.innerHTML += "</br><button onclick=\"window.location.reload()\">Play Again</button>";
@@ -118,6 +143,10 @@ function play(question = 0)
 
 /**
  * Creates the text for the object that is stored in gameText
+ *
+ * This function and the object it initilizes, gameText, greatly reduce the amount
+ * of custom if statements and inline text needed, allowing me to focus on the story
+ * writing more once the programming step is complete.
 */
 function setupGameText()
 {
@@ -130,7 +159,7 @@ function setupGameText()
     */
     function createQuestion(storyText, firstOptionButton, secondOptionButton, isEnd = false)
     {
-        return {//blame JavaScript for making me for put this brace here
+        return {//blame JavaScript for forcing me to put this brace here
             story: storyText,
             end: isEnd,
 
@@ -155,7 +184,8 @@ function setupGameText()
             return `<button type=\"button\" onclick=\"play(${nextQuestion})\">${buttonText}</button>`;
     }
 
-    gameText =
+
+    gameText =//above functions greatly simplify populating the game with text and options
     {
         intro:
         {
