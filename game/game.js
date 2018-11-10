@@ -23,7 +23,7 @@
 "use strict";
 
 /**
- * Displays introduction text and a play button to gameTextArea and gameInteractArea
+ * Displays introduction text and a play button
 */
 function intro()
 {

@@ -22,17 +22,45 @@
 */
 "use strict";
 
+/**
+ * The player's name
+ * @type {String}
+ */
 let playerName = "";
-let gameText;//object with all text to use for the game
 
+/**
+ * The text to use for the game and the flow of the questions
+ * @type {Object}
+ */
+let gameText;
 
+/**
+ * The form element for getting player info
+ * @type {Element}
+ */
 const gameForm = document.getElementById("gameForm");
+
+/**
+ * The input field for getting the player's name
+ * @type {Element}
+ */
 const nameField = document.getElementById("nameField");
 
+/**
+ * The div element for displaying text
+ * @type {Element}
+ */
 const gameTextArea = document.getElementById("gameTextArea");
+
+/**
+ * The div element for buttons
+ * @type {Element}
+ */
 const gameInteractArea = document.getElementById("gameInteractArea");
 
-
+/**
+ * Sets playerName based on nameField and starts the game
+*/
 function setup()
 {
     playerName = nameField.value;
@@ -49,6 +77,9 @@ function setup()
     }
 }
 
+/**
+ * Wipes the innerHTML of gameForm, gameTextArea and gameInteractArea
+*/
 function wipeGameplayAreas()
 {
     gameForm.innerHTML = "";
@@ -56,8 +87,16 @@ function wipeGameplayAreas()
     gameInteractArea.innerHTML = "";
 }
 
+/**
+ * Creates an object that is stored in gameText
+*/
 function setupGameText()
 {
+    /**
+     * Convience function to create buttons that onClick to the next question
+     * @param {nextQuestion} The question to go to if clicked (parameter of play())
+     * @param {buttonText} The text on the button
+    */
     function createOptionButtonTag(nextQuestion, buttonText)
     {
         if (nextQuestion === undefined || buttonText === undefined)
@@ -77,7 +116,7 @@ function setupGameText()
 
         outro:
         {
-            
+
         },
 
         questions://an array of storylines and decisions
