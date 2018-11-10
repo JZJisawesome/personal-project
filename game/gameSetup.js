@@ -37,7 +37,7 @@ function setup()
 {
     playerName = nameField.value;
 
-    if (playerName == "")
+    if (playerName === "")
         gameTextArea.innerHTML = "Whoops! Looks like you've forgotton to enter your name. Try again.";
     else
     {
@@ -58,6 +58,14 @@ function wipeGameplayAreas()
 
 function setupGameText()
 {
+    function createOptionButtonTag(nextQuestion, buttonText)
+    {
+        if (nextQuestion === undefined || buttonText === undefined)
+            return "";
+        else
+            return `<button type=\"button\" onclick=\"play(${nextQuestion})\">${buttonText}</button>`;
+    }
+
     gameText =
     {
         intro:
@@ -73,8 +81,8 @@ function setupGameText()
                 story: "story0",
                 options://both just go back and forth between questions 0 and 1 so far
                 [
-                    "<button type=\"button\" onclick=\"play(1)\">option0</button>",
-                    "<button type=\"button\" onclick=\"play(1)\">option1</button>"
+                    createOptionButtonTag(1, "option0"),
+                    createOptionButtonTag(1, "option0")
                 ]
             },
 
@@ -82,8 +90,8 @@ function setupGameText()
                 story: "story1",
                 options://both just go back and forth between questions 0 and 1 so far
                 [
-                    "<button type=\"button\" onclick=\"play(0)\">option0</button>",
-                    "<button type=\"button\" onclick=\"play(0)\">option1</button>"
+                    createOptionButtonTag(0, "option0"),
+                    createOptionButtonTag(0, "option1")
                 ]
             },
 

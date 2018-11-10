@@ -34,7 +34,7 @@ function play(question)
 {
     wipeGameplayAreas();
 
-    if (question == undefined)
+    if (question === undefined)
     {
         question = 0;
     }
