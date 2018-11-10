@@ -93,6 +93,25 @@ function wipeGameplayAreas()
 function setupGameText()
 {
     /**
+     * Convience function to create questions for the user to answer
+     * @param {storyText} The storylinefor the question
+     * @param {firstOptionButton} The first button + tag option (options[0])
+     * @param {secondOptionButton} The second button + tag option (options[0])
+    */
+    function createQuestion(storyText, firstOptionButton, secondOptionButton)
+    {
+        return {//blame JavaScript for making me for put this brace here
+            story: storyText,
+
+            options:
+            [
+                firstOptionButton,
+                secondOptionButton
+            ]
+        };
+    }
+
+    /**
      * Convience function to create buttons that onClick to the next question
      * @param {nextQuestion} The question to go to if clicked (parameter of play())
      * @param {buttonText} The text on the button
@@ -121,23 +140,19 @@ function setupGameText()
 
         questions://an array of storylines and decisions
         [
-            {
-                story: "story0",
-                options://both just go back and forth between questions 0 and 1 for now
-                [
-                    createOptionButtonTag(1, "option0"),
-                    createOptionButtonTag(1, "option1")
-                ]
-            },
+            createQuestion
+            (
+                "story0",
+                createOptionButtonTag(1, "option0"),
+                createOptionButtonTag(1, "option1")
+            ),
 
-            {
-                story: "story1",
-                options://both just go back and forth between questions 0 and 1 for now
-                [
-                    createOptionButtonTag(0, "option0"),
-                    createOptionButtonTag(0, "option1")
-                ]
-            },
+            createQuestion
+            (
+                "story1",
+                createOptionButtonTag(0, "option0"),
+                createOptionButtonTag(0, "option1")
+            ),
 
         ]
     };

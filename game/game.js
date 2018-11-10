@@ -38,13 +38,8 @@ function intro()
  * Displays a question from gameText that the user will answer
  * @param {question} The question to display, default 0
 */
-function play(question)
+function play(question = 0)
 {
-    if (question === undefined)
-    {
-        question = 0;
-    }
-
     wipeGameplayAreas();
     gameTextArea.innerHTML += gameText.questions[question].story + "</br></br>";
 
