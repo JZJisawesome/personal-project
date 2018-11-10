@@ -107,12 +107,10 @@ function play(question = 0)
     wipeGameplayAreas();
     gameTextArea.innerHTML += gameText.questions[question].story + "</br></br>";
 
-    if (!gameText.questions[question].end)//not and ending scene
-    {
-        gameInteractArea.innerHTML += gameText.questions[question].options[0];
-        gameInteractArea.innerHTML += gameText.questions[question].options[1];
-    }
-    else
+    gameInteractArea.innerHTML += gameText.questions[question].options[0];
+    gameInteractArea.innerHTML += gameText.questions[question].options[1];
+    
+    if (gameText.questions[question].end)
     {
         gameInteractArea.innerHTML += "</br><button onclick=\"window.location.reload()\">Play Again</button>";
     }
