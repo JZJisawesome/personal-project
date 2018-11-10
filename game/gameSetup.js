@@ -128,9 +128,9 @@ function setupGameText()
     {
         intro:
         {
-            greeting:       `greeting ${playerName}`,
-            introText:      "introText",
-            startButton:    "startButton",
+            greeting:       `Placeholder greeting text (name: ${playerName})`,
+            introText:      "Placeholder introduction text",
+            startButton:    "Placeholder startButton text",
         },
 
         outro:
@@ -142,16 +142,16 @@ function setupGameText()
         [
             createQuestion
             (
-                "story0",
-                createOptionButtonTag(1, "option0"),
-                createOptionButtonTag(1, "option1")
+                "Placeholder story text (story: 0)",
+                createOptionButtonTag(1, "Placeholder option text (option: 0)"),
+                createOptionButtonTag(1, "Placeholder option text (option: 1)")
             ),
 
             createQuestion
             (
-                "story1",
-                createOptionButtonTag(0, "option0"),
-                createOptionButtonTag(0, "option1")
+                "Placeholder story text (story: 1)",
+                createOptionButtonTag(0, "Placeholder option text (option: 0)"),
+                createOptionButtonTag(0, "Placeholder option text (option: 1)")
             ),
 
         ]
