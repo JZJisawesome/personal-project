@@ -107,8 +107,15 @@ function play(question = 0)
     wipeGameplayAreas();
     gameTextArea.innerHTML += gameText.questions[question].story + "</br></br>";
 
-    gameInteractArea.innerHTML += gameText.questions[question].options[0];
-    gameInteractArea.innerHTML += gameText.questions[question].options[1];
+    if (!gameText.questions[question].end)//not and ending scene
+    {
+        gameInteractArea.innerHTML += gameText.questions[question].options[0];
+        gameInteractArea.innerHTML += gameText.questions[question].options[1];
+    }
+    else
+    {
+        gameInteractArea.innerHTML += "</br><button onclick=\"window.location.reload()\">Play Again</button>";
+    }
 }
 
 /**
@@ -121,11 +128,13 @@ function setupGameText()
      * @param {storyText} The storylinefor the question
      * @param {firstOptionButton} The first button + tag option (options[0])
      * @param {secondOptionButton} The second button + tag option (options[0])
+     * @param {isEnd} Whether the question will end the game or not (default is false)
     */
-    function createQuestion(storyText, firstOptionButton, secondOptionButton)
+    function createQuestion(storyText, firstOptionButton, secondOptionButton, isEnd = false)
     {
         return {//blame JavaScript for making me for put this brace here
             story: storyText,
+            end: isEnd,
 
             options:
             [
@@ -154,29 +163,29 @@ function setupGameText()
         {
             greeting:       `Placeholder greeting text (name: ${playerName})`,
             introText:      "Placeholder introduction text",
-            startButton:    "Placeholder startButton text",
-        },
-
-        outro:
-        {
-
+            startButton:    "Placeholder startButton text"
         },
 
         questions://an array of storylines and decisions
         [
             createQuestion
             (
-                "Placeholder story text (story: 0)",
+                "Placeholder story text (questions: 0)",
                 createOptionButtonTag(1, "Placeholder option text (option: 0)"),
                 createOptionButtonTag(1, "Placeholder option text (option: 1)")
             ),
-
             createQuestion
             (
-                "Placeholder story text (story: 1)",
-                createOptionButtonTag(0, "Placeholder option text (option: 0)"),
-                createOptionButtonTag(0, "Placeholder option text (option: 1)")
+                "Placeholder story text (questions: 1)",
+                createOptionButtonTag(2, "Placeholder option text (option: 0)"),
+                createOptionButtonTag(2, "Placeholder option text (option: 1)")
             ),
+            createQuestion
+            (
+                "Placeholder ending text (questions: 2)",
+                "", "",//skip buttons
+                true//it's an ending
+            )
         ]
     };
 }
