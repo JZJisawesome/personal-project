@@ -102,7 +102,7 @@ function wipeGameplayAreas()
 function setup()
 {
     if (nameField.value === "")//no name entered
-        gameTextArea.innerHTML = "Whoops! Looks like you've forgotton to enter your name. Try again.";
+        gameTextArea.innerHTML = "<p>Whoops! Looks like you've forgotton to enter your name. Try again.</p>";
     else
     {
         playerName = nameField.value;
@@ -120,8 +120,8 @@ function setup()
 */
 function intro()
 {
-    gameTextArea.innerHTML += story.intro.greeting + "</br></br>";//eraces any existing error text
-    gameTextArea.innerHTML += story.intro.body + "</br></br>";
+    gameTextArea.innerHTML = "<p>" + story.intro.greeting + "</p>";
+    gameTextArea.innerHTML += "<p>" + story.intro.body + "</p>";
 
     gameInteractArea.innerHTML += `<button type=\"button\" onclick=\"play()\">${story.intro.startButton}</button>`;//play() button
 }
@@ -134,16 +134,14 @@ function play(sceneNum = 0)
 {
     wipeGameplayAreas();
 
-    gameTextArea.innerHTML += story.scenes[sceneNum].body + "</br></br>";
+    gameTextArea.innerHTML += "<p>" + story.scenes[sceneNum].body + "</p>";
 
 
     gameInteractArea.innerHTML += story.scenes[sceneNum].options[0];
     gameInteractArea.innerHTML += story.scenes[sceneNum].options[1];
 
     if (story.scenes[sceneNum].end)
-    {
         gameInteractArea.innerHTML += "</br><button onclick=\"window.location.reload()\">Play Again</button>";
-    }
 }
 
 /**
