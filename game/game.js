@@ -128,7 +128,7 @@ function intro()
 
 /**
  * Displays a question from story that the user will answer
- * @param {question} The question to display, default 0
+ * @param {sceneNum} The question to display, default 0
 */
 function play(sceneNum = 0)
 {
@@ -149,7 +149,7 @@ function play(sceneNum = 0)
  *
  * This function and the object it initilizes, story, greatly reduce the amount
  * of custom if statements and inline text needed, allowing me to focus on the story
- * writing more once the programming step is complete.
+ * writing once the programming step is complete.
 */
 function setupStory()
 {
@@ -162,7 +162,8 @@ function setupStory()
     */
     function createScene(bodyText, firstOptionButton, secondOptionButton, isEnd = false)
     {
-        return {//blame JavaScript for forcing me to put this brace here
+        return {//Blame JavaScript for forcing me to put this brace here. I kind of feel bad for the poor thing, it must feel so left out.
+        //{
             body: bodyText,
             end: isEnd,
 
@@ -176,19 +177,19 @@ function setupStory()
 
     /**
      * Convience function to create buttons that onClick to the next question
-     * @param {nextQuestion} The question to go to if clicked (parameter of play())
+     * @param {nextScene} The scene to go to if clicked (parameter of play())
      * @param {buttonText} The text on the button
     */
-    function createOptionButtonTag(nextQuestion, buttonText)
+    function createOptionButtonTag(nextScene, buttonText)
     {
-        if (nextQuestion === undefined || buttonText === undefined)
+        if (nextScene === undefined || buttonText === undefined)
             return "";
         else
-            return `<button type=\"button\" onclick=\"play(${nextQuestion})\">${buttonText}</button>`;
+            return `<button type=\"button\" onclick=\"play(${nextScene})\">${buttonText}</button>`;
     }
 
 
-    story =//above functions greatly simplify populating the game with text and options
+    story =//above functions greatly simplify populating the story with text and options
     {
         intro:
         {
